@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>学乱 GAKURAN · 战斗风格天赋词条图鉴</title>
 <meta name="description" content="Roblox Gakuran（学乱）全 24 种战斗风格的天赋词条一览，数据转录自官方 Trello 看板。" />
+<meta name="author" content="kaglorn" />
 <style>
   :root{
     --bg:#0a0a0c;
@@ -76,6 +77,11 @@
   .btn:hover{background:rgba(255,255,255,.09);border-color:#3a3a46;transform:translateY(-1px)}
   .btn-primary{background:var(--seal);border-color:var(--seal);color:#fff}
   .btn-primary:hover{background:#d94b38;border-color:#d94b38}
+  .author{
+    display:inline-flex;align-items:baseline;gap:7px;margin:20px 0 0;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint)
+  }
+  .author b{color:var(--seal);font-weight:600;letter-spacing:.24em}
 
   /* ============ TOOLBAR ============ */
   .toolbar{
@@ -104,6 +110,29 @@
   .chip[aria-pressed="true"]{background:color-mix(in srgb,var(--c) 16%,transparent);border-color:var(--c);color:#fff}
   .chip[aria-pressed="true"] .dot{opacity:1;box-shadow:0 0 10px var(--c)}
   .result-count{font-family:var(--mono);font-size:12px;color:var(--ink-faint);white-space:nowrap}
+  .sec-nav{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.06);
+    display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  .sec-nav a{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#a9a39a;text-decoration:none;
+    padding:5px 10px;border:1px solid var(--line);border-radius:999px;transition:.18s;white-space:nowrap}
+  .sec-nav a:hover{color:#fff;border-color:var(--seal);background:rgba(200,64,47,.1)}
+  .sec-nav .lbl{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;color:var(--ink-faint);
+    text-transform:uppercase;margin-right:4px}
+
+  /* ============ CHANGELOG ============ */
+  .log{position:relative;margin:4px 0 0 5px;padding-left:26px;border-left:1px solid var(--line)}
+  .log-item{position:relative;padding-bottom:6px}
+  .log-item + .log-item{margin-top:30px}
+  .log-item::before{content:"";position:absolute;left:-31px;top:5px;width:9px;height:9px;border-radius:50%;
+    background:var(--seal);box-shadow:0 0 0 4px rgba(200,64,47,.13)}
+  .log-head{display:flex;align-items:center;gap:13px;margin-bottom:13px;flex-wrap:wrap}
+  .log-ver{font-family:var(--mono);font-size:13px;letter-spacing:.12em;color:#eae4d8}
+  .log-date{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--ink-faint)}
+  .log-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:#e0b9ad;border:1px solid rgba(200,64,47,.34);border-radius:4px;padding:2px 7px;
+    background:rgba(200,64,47,.09)}
+  .log-list{margin:0;padding-left:20px;display:grid;gap:8px}
+  .log-list li{font-size:13.2px;line-height:1.7;color:#b9b3a9}
+  .log-list li b{color:#eae4d8;font-weight:600}
 
   /* ============ RARITY GROUP ============ */
   .tier-group{margin:0 0 46px;scroll-margin-top:96px}
@@ -175,6 +204,73 @@
   .mini-btn:hover{color:#fff;border-color:color-mix(in srgb,var(--c) 55%,var(--line));
     background:color-mix(in srgb,var(--c) 10%,transparent)}
 
+  /* ============ HEIGHT & STATS ============ */
+  #height-wrap{scroll-margin-top:136px;margin-top:34px}
+  .height-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:14px;margin-bottom:26px}
+  .aspect{
+    --c:#c8a06a;position:relative;background:linear-gradient(180deg,#141419,#101014);
+    border:1px solid var(--line);border-radius:12px;padding:16px 18px 15px;overflow:hidden;transition:.2s;
+    display:flex;flex-direction:column
+  }
+  .aspect:hover{border-color:#34343f;transform:translateY(-2px)}
+  .aspect::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
+    background:linear-gradient(180deg,var(--c),transparent 80%);opacity:.75}
+  .aspect h3{font-family:var(--serif);font-size:17px;margin:0;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+  .aspect h3 em{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-faint);text-transform:uppercase}
+  .aspect .en{font-family:var(--serif);font-size:13.8px;color:var(--ink-dim);margin:9px 0 0;line-height:1.5}
+  .aspect .zh{font-size:12.2px;color:#918b81;margin:6px 0 0;line-height:1.6;
+    padding-left:9px;border-left:1px solid rgba(255,255,255,.08)}
+  .scale{display:flex;align-items:center;gap:9px;margin:auto 0 0;padding-top:16px;font-family:var(--mono);
+    font-size:10.5px;letter-spacing:.06em;color:var(--ink-faint)}
+  .scale i{flex:1;height:2px;border-radius:2px;opacity:.5;background:linear-gradient(90deg,#6d86c9,#c8402f)}
+  .scale b{color:#cdc7bd;font-weight:500;white-space:nowrap}
+
+  .rt{background:linear-gradient(180deg,#121217,#0e0e12);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .rt-head,.rt-row{display:grid;grid-template-columns:1.55fr 1fr 1fr;gap:12px;padding:11px 18px;align-items:center}
+  .rt-head{border-bottom:1px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.2em;
+    color:var(--ink-faint);text-transform:uppercase;background:rgba(255,255,255,.02)}
+  .rt-head span:nth-child(2){color:#7d92cd;text-align:right}
+  .rt-head span:nth-child(3){color:#c8402f;text-align:right}
+  .rt-row{border-bottom:1px solid rgba(255,255,255,.045)}
+  .rt-row:last-child{border-bottom:none}
+  .rt-row:hover{background:rgba(255,255,255,.022)}
+  .rt-name{font-size:13px;color:#cfc9bf}
+  .rt-name em{font-style:normal;display:block;font-family:var(--mono);font-size:9.5px;
+    letter-spacing:.14em;color:var(--ink-faint);margin-top:2px}
+  .rt-min,.rt-max{font-family:var(--mono);font-size:14.5px;text-align:right;letter-spacing:.02em}
+  .rt-min{color:#9fb0d8}
+  .rt-max{color:#fff}
+  .pole-note{font-size:12.2px;color:var(--ink-faint);margin:12px 0 0;line-height:1.7}
+
+  /* ============ M1 / M2 ============ */
+  .msec{margin-top:46px;scroll-margin-top:136px}
+  .m-list{background:linear-gradient(180deg,#121217,#0e0e12);border:1px solid var(--line);
+    border-radius:12px;overflow:hidden}
+  .m-row{display:flex;gap:14px;padding:15px 20px;border-bottom:1px solid rgba(255,255,255,.05);transition:.18s}
+  .m-row:last-child{border-bottom:none}
+  .m-row:hover{background:rgba(255,255,255,.022)}
+  .m-no{font-family:var(--mono);font-size:10.5px;color:var(--seal);opacity:.75;
+    padding-top:4px;flex-shrink:0;letter-spacing:.06em}
+  .m-body{min-width:0}
+  .m-en{font-family:var(--serif);font-size:15.5px;color:#ded8ce;margin:0;line-height:1.5}
+  .m-zh{font-size:12.6px;color:#918b81;margin:5px 0 0;line-height:1.62;
+    padding-left:9px;border-left:1px solid rgba(255,255,255,.09)}
+  .m-zh a{color:#c8bda8;text-decoration:none;border-bottom:1px solid #4a4436}
+  .m-zh a:hover{color:#fff;border-bottom-color:var(--seal)}
+  .m-q{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    color:#c8bda8;margin:0 0 7px}
+  .m-note{margin:14px 0 0;padding:13px 18px;border-radius:10px;
+    border:1px solid rgba(200,64,47,.32);border-left:3px solid var(--seal);
+    background:rgba(200,64,47,.07)}
+  .m-note p{margin:0;font-family:var(--serif);font-size:15px;color:#e6dfd4;line-height:1.5}
+  .m-note span{display:block;margin-top:4px;font-size:12.4px;color:#a29a8f;font-family:var(--sans)}
+  .calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:14px 0 0}
+  .calc div{border:1px solid var(--line);border-radius:10px;padding:12px 16px;background:rgba(255,255,255,.022)}
+  .calc span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--ink-faint);
+    text-transform:uppercase}
+  .calc b{display:block;margin-top:7px;font-family:var(--mono);font-size:16.5px;color:#fff;letter-spacing:.02em;font-weight:600}
+  .calc b i{font-style:normal;color:var(--seal);font-size:11.5px;margin-left:9px;letter-spacing:.08em}
+
   /* ============ GLOSSARY ============ */
   .section-head{margin:16px 0 22px;padding-bottom:14px;border-bottom:1px solid var(--line)}
   .section-head h2{font-family:var(--serif);font-size:28px;margin:0;letter-spacing:.04em}
@@ -214,6 +310,9 @@
   footer{margin-top:60px;padding:34px 0 60px;border-top:1px solid var(--line);color:var(--ink-faint);font-size:12.5px}
   footer a{color:var(--ink-dim);text-decoration:none;border-bottom:1px solid #33333d}
   footer a:hover{color:#fff}
+  footer .credit{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--ink-faint);
+    text-transform:uppercase;margin:0 0 12px}
+  footer .credit b{color:var(--seal);letter-spacing:.24em}
   footer .fine{margin-top:10px;line-height:1.75;max-width:78ch}
 
   @media (max-width:640px){
@@ -247,6 +346,7 @@
       <button class="btn" id="jump-glossary">查看通用天赋说明</button>
       <button class="btn" id="jump-styles">浏览风格词条</button>
     </div>
+    <p class="author">Compiled by <b>kaglorn</b> · 整理制作 kaglorn</p>
   </div>
 </header>
 
@@ -256,14 +356,399 @@
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
       </svg>
-      <input id="q" type="search" placeholder="搜索天赋 / 风格 / 关键词，如 Guard Pierce、破防、布娃娃…" autocomplete="off" />
+      <input id="q" type="search" placeholder="搜索天赋 / 风格 / 关键词，如 Guard Pierce、格挡穿透、布娃娃…" autocomplete="off" />
     </label>
     <div class="chips" id="chips"></div>
     <span class="result-count" id="count"></span>
   </div>
+  <div class="toolbar-inner sec-nav">
+    <span class="lbl">Sections 板块</span>
+    <a href="#height-wrap">身高与数值</a>
+    <a href="#m1">M1</a>
+    <a href="#m2">M2</a>
+    <a href="#dash">DASH</a>
+    <a href="#posture">架势与耐力</a>
+    <a href="#chip">格挡穿透</a>
+    <a href="#parry">招架 · 弹反</a>
+    <a href="#block">格挡</a>
+    <a href="#guardbreak">破防</a>
+    <a href="#grapple">缠斗</a>
+    <a href="#armor">霸体·无敌</a>
+    <a href="#team">Team</a>
+    <a href="#counter">防反</a>
+    <a href="#glossary-wrap">通用天赋</a>
+    <a href="#changelog">更新日志</a>
+  </div>
 </nav>
 
 <main class="wrap" id="styles"></main>
+
+<section class="wrap" id="height-wrap">
+  <div class="section-head">
+    <h2><small>HEIGHT &amp; STATS · 身高与数值</small>身高与数值</h2>
+    <p>你的角色身高决定了判定框大小、攻击速度与伤害。身高越高：伤害越高、血量越高、判定框更大、攻速更慢；身高越矮则完全相反。</p>
+    <p>身高带来的核心优势是判定框范围扩大：相比单纯的攻击距离加成，身高会让判定框在<strong>横向、纵向</strong>大幅增加，同时还会小幅提升攻击距离。</p>
+  </div>
+
+  <div class="height-grid">
+    <article class="aspect">
+      <h3>攻击速度 <em>Attack Speed</em></h3>
+      <p class="en">Taller = slower swings, Shorter = faster swings. This includes combo reset timers, meaning shorter players attacking cooldowns are shorter.</p>
+      <p class="zh">高个子挥拳更慢，矮个子挥拳更快。该效果同样作用于一套 M1 的重置计时，也就是说矮个子角色的攻击冷却更短。</p>
+      <div class="scale"><b>矮 1.15x</b><i></i><b>高 0.85x</b></div>
+    </article>
+    <article class="aspect">
+      <h3>伤害 <em>Damage</em></h3>
+      <p class="en">Taller = more damage, Shorter = less damage. Stacks with style damage.</p>
+      <p class="zh">高个子伤害更高，矮个子伤害更低。该倍率可以和流派伤害加成叠加。</p>
+      <div class="scale"><b>矮 0.85x</b><i></i><b>高 1.15x</b></div>
+    </article>
+    <article class="aspect">
+      <h3>攻击判定框 <em>Hitbox Size</em></h3>
+      <p class="en">Taller = larger attack hitboxes, Shorter = smaller attack hitboxes. Easier to land hits when taller, can play ranged / distance playstyle.</p>
+      <p class="zh">高个子攻击判定框更大，矮个子更小。高个子更容易命中敌人，适合拉扯、远距离打法。</p>
+      <div class="scale"><b>窄 3.40</b><i></i><b>宽 4.60</b></div>
+    </article>
+    <article class="aspect">
+      <h3>生命值 <em>Health</em></h3>
+      <p class="en">Taller = more health, Shorter = less health. Not a major difference or change in health unless extremely tall or extremely short (base health = 100HP).</p>
+      <p class="zh">高个子生命值更高，矮个子生命值更低。除非是极限最高 / 极限最低身高，否则生命值差距并不明显（基础生命值 = 100 点）。</p>
+      <div class="scale"><b>基础 100 HP</b><i></i><b>极限身高才明显</b></div>
+    </article>
+  </div>
+
+  <div class="rt">
+    <div class="rt-head"><span>指标 Metric</span><span>最矮 Minimum</span><span>最高 Maximum</span></div>
+    <div class="rt-row"><span class="rt-name">M1 攻击距离<em>M1 Reach</em></span><span class="rt-min">5.70</span><span class="rt-max">6.30</span></div>
+    <div class="rt-row"><span class="rt-name">M2 攻击距离<em>M2 Reach</em></span><span class="rt-min">4.70</span><span class="rt-max">5.30</span></div>
+    <div class="rt-row"><span class="rt-name">伤害倍率<em>Damage</em></span><span class="rt-min">0.85x</span><span class="rt-max">1.15x</span></div>
+    <div class="rt-row"><span class="rt-name">攻击速度<em>Attack Speed</em></span><span class="rt-min">1.15x</span><span class="rt-max">0.85x</span></div>
+    <div class="rt-row"><span class="rt-name">M1 攻击判定宽度<em>M1 Width</em></span><span class="rt-min">3.40</span><span class="rt-max">4.60</span></div>
+    <div class="rt-row"><span class="rt-name">重击冷却<em>Heavy Cooldown</em></span><span class="rt-min">CD ÷ 1.15</span><span class="rt-max">CD ÷ 0.85</span></div>
+  </div>
+  <p class="pole-note">上表为官方给出的两个极限身高取值：最矮（Minimum Height）与最高（Maximum Height）。</p>
+
+</section>
+
+<section class="wrap msec" id="m1">
+  <div class="section-head">
+    <h2><small>LIGHT ATTACKS · 轻攻击</small>M1</h2>
+    <p>Description｜说明 —— 轻攻击（M1）的官方说明逐条转录，英文原文与中文对照并列。</p>
+  </div>
+  <div class="m-list">
+    <div class="m-row"><span class="m-no">01</span><div class="m-body">
+      <p class="m-en">Up to 4 hit combo — Can be done by tapping or holding (recommended) the M1 key.</p>
+      <p class="m-zh">最多四段 M1 连击，可通过点击或长按（推荐长按）M1 按键打出。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">02</span><div class="m-body">
+      <p class="m-en">Combo resets after short time with no attacks</p>
+      <p class="m-zh">短暂不进行攻击后，这一套 M1 就会重置（重新从第一段 M1 开始）。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">03</span><div class="m-body">
+      <p class="m-en">The 4th/Last M1 is a combo finisher — more knockback</p>
+      <p class="m-zh">第 4 段也就是最后一段 M1 为连招终结技，击退效果更强（第 4A 带一个明显击退）。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">04</span><div class="m-body">
+      <p class="m-en">M1's also effect grappling / clashing, further detail in (Grappling).</p>
+      <p class="m-zh">M1 攻击同样会影响缠斗机制，更多详情见缠斗板块。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">05</span><div class="m-body">
+      <p class="m-en">Damage &amp; Hitbox based off height: (Height Based Combat Modifiers)</p>
+      <p class="m-zh">伤害与攻击判定框受身高影响（基于身高的战斗修正参数，详见上一节「身高与数值」）。</p>
+    </div></div>
+  </div>
+</section>
+
+<section class="wrap msec" id="m2">
+  <div class="section-head">
+    <h2><small>HEAVY ATTACKS · 重击</small>M2</h2>
+    <p>Description｜说明 —— 重击（M2）的官方说明逐条转录，英文原文与中文对照并列。</p>
+  </div>
+  <div class="m-list">
+    <div class="m-row"><span class="m-no">01</span><div class="m-body">
+      <p class="m-en">A standalone attack on universal cooldown (applies for ALL heights currently)</p>
+      <p class="m-zh">独立招式，拥有统一冷却（目前该冷却对所有身高角色生效）。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">02</span><div class="m-body">
+      <p class="m-en">+1.7x more damage than a singular M1 (+70%)</p>
+      <p class="m-zh">伤害是单次 M1 的 1.7 倍（高出 70%）。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">03</span><div class="m-body">
+      <p class="m-en">Cannot be blocked, must be parried, dodged or canceled with an M1: (Blockbreaks / Guardbreaks)</p>
+      <p class="m-zh">无法格挡，只能通过完美格挡、闪避，或是用 M1 攻击打断（破防机制）。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">04</span><div class="m-body">
+      <p class="m-en">Certain styles provide hyper-armor which can not be canceled by an M1 and must be parried (HyperArmor / IFrames)</p>
+      <p class="m-zh">部分流派带有霸体，这类重击不能被 M1 打断，只能靠完美格挡应对（霸体 / 无敌帧）。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">05</span><div class="m-body">
+      <p class="m-en">Some styles have Ragdoll M2s which ragdolls the victim on hit for a short amount of time.</p>
+      <p class="m-zh">部分流派的重击为布娃娃重击，命中后会让对手短时间进入布娃娃倒地状态。</p>
+    </div></div>
+  </div>
+</section>
+
+<section class="wrap msec" id="dash">
+  <div class="section-head">
+    <h2><small>EVASIVE · 闪避</small>DASH</h2>
+    <p>Description｜说明 —— 闪避（Dash）的官方说明逐条转录，英文原文与中文对照并列。</p>
+  </div>
+  <div class="m-list">
+    <div class="m-row"><span class="m-no">01</span><div class="m-body">
+      <p class="m-en">Dodging has a very short cooldown, grants a small iframe (unhittable) window which can be used to dodge incoming attacks or reposition.</p>
+      <p class="m-zh">闪避（Dash）拥有很短的冷却时间，会提供一小段无敌帧（不可被命中），可以用来规避来袭攻击或是调整站位。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">02</span><div class="m-body">
+      <p class="m-en">Dodging currently does NOT take any stamina/posture (may change in the future)</p>
+      <p class="m-zh">闪避目前不消耗体力 / 架势值（未来版本可能改动）。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">03</span><div class="m-body">
+      <p class="m-en">When fighting more than 1 opponent the user is granted an additional iframe dodge.</p>
+      <p class="m-zh">当对战一名以上敌人时，玩家会获得一次额外带无敌帧的闪避（效果颜色为蓝色而不是白色）。</p>
+    </div></div>
+  </div>
+</section>
+
+<section class="wrap msec" id="posture">
+  <div class="section-head">
+    <h2><small>POSTURE &amp; STAMINA · 架势与耐力</small>架势与耐力</h2>
+    <p>Description｜说明 —— 架势与耐力共用同一套资源，官方对两者用途与耗尽后果的说明。</p>
+  </div>
+  <div class="m-list">
+    <div class="m-row"><span class="m-no">01</span><div class="m-body">
+      <p class="m-en">Posture = Stamina | Movement uses it for sprinting (how long you can run), combat uses it for blocking (how many attacks can be blocked before you are guardbroken), in addition Sprinting &amp; Blocking hits both drain posture.</p>
+      <p class="m-zh">架势 = 耐力。移动层面用于疾跑（决定奔跑时长）；战斗层面用于格挡（决定能够承受多少次攻击才会破防）。疾跑和格挡命中都会消耗架势。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">02</span><div class="m-body">
+      <p class="m-en">Posture: Prevents passive play, blocking an attack will take your posture instead of your HP (not including chip damage). A non displayed meter, if depleted will not allow the user to block the next attack. Getting hit with depleted posture will trigger a “Guard break” which stuns the defender giving the opponent an opening to attack.</p>
+      <p class="m-zh">架势：用来防止纯防守龟缩打法。格挡攻击时消耗架势，而非生命值（格挡磨血除外）。这是一个不显示的数值条；架势耗尽后，无法格挡下一次攻击。架势耗尽时被击中会触发「破防」，防守方陷入眩晕，给对手创造进攻机会。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">03</span><div class="m-body">
+      <p class="m-en">Stamina: To prevent infinite running just like posture it is an non displayed meter, when depleted will not allow the user to sprint.</p>
+      <p class="m-zh">耐力：和架势一样是隐藏数值条，用来防止无限疾跑；耐力耗尽后，无法疾跑。</p>
+    </div></div>
+  </div>
+  <div class="m-note">
+    <p>Posture is NOT needed to perfect block (parry)</p>
+    <span>招架（完美格挡）不需要消耗架势。</span>
+  </div>
+</section>
+
+<section class="wrap msec" id="chip">
+  <div class="section-head">
+    <h2><small>BLOCK CHIP · GUARD PIERCE</small>格挡穿透</h2>
+    <p>Description｜说明 —— 格挡穿透（Block Chip）决定你攻击一个「正在格挡」的对手时能造成多少伤害。</p>
+  </div>
+  <div class="m-list">
+    <div class="m-row"><span class="m-no">01</span><div class="m-body">
+      <p class="m-en">Every combat style has a ‘Block Chip Percentage’ via the Guard Pierce perk.</p>
+      <p class="m-zh">每个格斗流派都通过【格挡穿透】天赋（官方旧译「破盾穿刺」）拥有专属的「格挡磨血百分比」。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">02</span><div class="m-body">
+      <p class="m-en">This controls how much damage your attack does on somebody that blocked the attack.</p>
+      <p class="m-zh">该数值决定你的攻击命中格挡目标时，可以造成多少伤害。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">03</span><div class="m-body">
+      <p class="m-en">There is NO DAMAGE done if the attack is parried.</p>
+      <p class="m-zh">如果攻击被完美格挡（弹反），则不会造成任何伤害。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">04</span><div class="m-body">
+      <p class="m-en">For example, if my style has Guard Pierce I: 10% block chip damage, a blocked attack that normally does 5 DMG will only do 0.5 DMG. However, If I had a style with Guard Pierce IV: 25% block chip damage, then it would do 1.25 DMG instead.</p>
+      <p class="m-zh">举例：若流派拥有格挡穿透 I（10% 格挡磨血），原本 5 点伤害的攻击命中格挡目标，仅造成 0.5 点伤害。若是格挡穿透 IV（25% 格挡磨血），则会造成 1.25 点伤害。</p>
+    </div></div>
+  </div>
+  <div class="calc">
+    <div><span>Guard Pierce I · 10%</span><b>5 DMG × 10%<i>= 0.5 DMG</i></b></div>
+    <div><span>Guard Pierce IV · 25%</span><b>5 DMG × 25%<i>= 1.25 DMG</i></b></div>
+  </div>
+</section>
+
+<section class="wrap msec" id="parry">
+  <div class="section-head">
+    <h2><small>PARRYING · PERFECT BLOCKING</small>招架 · 弹反</h2>
+    <p>Description｜说明 —— 招架（弹反）是对「即将命中」的攻击做一次精准格挡。</p>
+  </div>
+  <div class="m-list">
+    <div class="m-row"><span class="m-no">01</span><div class="m-body">
+      <p class="m-en">Parrying is a timed block right as an attack is about to land. If your timing is inside the parry window while facing the attacker, you perfect block instead of taking a normal block.</p>
+      <p class="m-zh">招架是在攻击即将命中的瞬间进行格挡。面向攻击者，且操作时机落在招架判定窗口内时，就会触发完美格挡，而非普通格挡。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">02</span><div class="m-body">
+      <p class="m-en">A parry is not a normal block: no damage, no block chip, no posture loss.</p>
+      <p class="m-zh">招架不同于普通格挡：不会受到伤害、没有格挡磨血、也不会消耗架势值（无效化对手伤害）。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">03</span><div class="m-body">
+      <p class="m-en">Parrying stuns your attacker temporarily for 0.45 seconds, presenting the opportunity to counter and attack them.</p>
+      <p class="m-zh">招架会使进攻方短暂眩晕 0.45 秒，为你提供反击进攻的机会。</p>
+    </div></div>
+  </div>
+</section>
+
+<section class="wrap msec" id="block">
+  <div class="section-head">
+    <h2><small>BLOCKING · 格挡</small>格挡</h2>
+    <p>Description｜说明 —— 格挡是基础的防御动作，它同时关联「架势」与「破防」两套机制。</p>
+  </div>
+  <div class="m-list">
+    <div class="m-row"><span class="m-no">01</span><div class="m-body">
+      <p class="m-en">Blocking is used to block an incoming attack, it also ties into both of the following:</p>
+      <p class="m-zh">格挡用于抵挡袭来的攻击，它同时关联下面两项机制：</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">02</span><div class="m-body">
+      <p class="m-en">Posture — to understand how it works: (Posture / Stamina)</p>
+      <p class="m-zh">架势 —— 了解运作机制详见 <a href="#posture">「架势与耐力」板块</a></p>
+    </div></div>
+    <div class="m-row"><span class="m-no">03</span><div class="m-body">
+      <p class="m-en">Block Breaks / Guard Breaks — to understand how it works: (Blockbreaks / Guardbreaks)</p>
+      <p class="m-zh">破防 —— 了解运作机制详见 <a href="#guardbreak">「破防」板块</a></p>
+    </div></div>
+  </div>
+</section>
+
+<section class="wrap msec" id="guardbreak">
+  <div class="section-head">
+    <h2><small>BLOCKBREAKS · GUARD BREAKS</small>破防</h2>
+    <p>Description｜说明 —— 格挡被打破时的结算方式：全额破防伤害 + 约 2 秒眩晕。</p>
+  </div>
+  <div class="m-list">
+    <div class="m-row"><span class="m-no">01</span><div class="m-body">
+      <p class="m-en">This is when your block is broken. You take full guard break damage, and get stunned for ~2 seconds.</p>
+      <p class="m-zh">这就是你的格挡被打破的状态。你会受到全额破防伤害，并且被眩晕约 2 秒。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">02</span><div class="m-body">
+      <p class="m-en">You do not take block chip damage on guardbreaks</p>
+      <p class="m-zh">发生破防时，不会再受到格挡磨血伤害。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">03</span><div class="m-body">
+      <p class="m-en">M2s always break your block, so you must either parry, dodge, or hit them before theirs lands.</p>
+      <p class="m-zh">M2 重击必定击破你的格挡，因此你必须使用完美格挡、闪避，或是在对方重击命中前抢先攻击打断。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">04</span><div class="m-body">
+      <p class="m-en">M1s can break your block if you run out of enough posture to do so (&lt;10)</p>
+      <p class="m-zh">当你的架势值不足（低于 10）时，M1 轻击也可以击破你的格挡。</p>
+    </div></div>
+  </div>
+  <div class="calc">
+    <div><span>M2 Heavy · 重击</span><b>必定破防<i>ALWAYS</i></b></div>
+    <div><span>M1 Light · 轻击</span><b>架势 &lt; 10 才破防<i>CONDITIONAL</i></b></div>
+  </div>
+</section>
+
+<section class="wrap msec" id="grapple">
+  <div class="section-head">
+    <h2><small>GRAPPLING · CLASHING</small>缠斗</h2>
+    <p>Description｜说明 —— 双方同层级攻击同时挥出时触发的对撞判定。</p>
+  </div>
+  <div class="m-list">
+    <div class="m-row"><span class="m-no">01</span><div class="m-body">
+      <p class="m-en">When two fighters swing the same attack tier (M1 vs M1, M2 vs M2) at nearly the same time, their attacks can clash (grapple). Both fighters are locked in place clinching each other for a short period, the fighter with the longest M1 combo leading to the grapple wins, and shoves the other back with negated damage. (-50%)</p>
+      <p class="m-zh">两名玩家同时使出同类型攻击（M1 对 M1、M2 对 M2）时，攻击会发生对撞，触发缠斗。两人会原地僵持一小段时间；缠斗前 M1 连击段数更高的一方获胜，将对手击退，本次攻击伤害衰减 50%。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">02</span><div class="m-body">
+      <p class="m-q">What determines the Chance of a Grapple? · 缠斗概率由什么决定？</p>
+      <p class="m-en">The defender's combat style (the one who loses the grapple) rolls based on the Resilience grapple chance on their style.</p>
+      <p class="m-zh">由防守方（缠斗中的落败方）所属流派的韧性判定概率。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">03</span><div class="m-body">
+      <p class="m-q">Example · 举例</p>
+      <p class="m-en">You're fighting a Karate style user (Resilience II - 25%), you both M1 at nearly the same time, but your combo was longer, it makes them the defender granting you the win.</p>
+      <p class="m-zh">你和空手道玩家对战（韧性 II，25%），双方几乎同时打出 M1，但你的连击段数更长，对方成为防守方，你赢得这次缠斗。</p>
+    </div></div>
+  </div>
+  <div class="m-note">
+    <p>Longest M1 combo wins the grapple · 连击段数更高者胜</p>
+    <span>败方按自身流派的 Resilience（韧性）概率被判定为防守方。</span>
+  </div>
+</section>
+
+<section class="wrap msec" id="armor">
+  <div class="section-head">
+    <h2><small>HYPER-ARMOR · IFRAMES</small>霸体与无敌</h2>
+    <p>Description｜说明 —— 两种「打不断」的机制：霸体硬吃伤害继续出招，无敌完全不被命中。</p>
+  </div>
+  <div class="m-list">
+    <div class="m-row"><span class="m-no">01</span><div class="m-body">
+      <p class="m-q">Hyper-Armor · 霸体</p>
+      <p class="m-en">Hyper-Armor is when your attack absorbs a hit without flinching. You still take full damage, but your swing cannot be interrupted and plays out to completion.</p>
+      <p class="m-zh">霸体：攻击过程中承受攻击也不会产生受击硬直。你依旧会受到全额伤害，但攻击动作不会被打断，可以完整打完。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">02</span><div class="m-body">
+      <p class="m-en">Hyper-Armor does not stop damage. You eat the hit, but you keep swinging.</p>
+      <p class="m-zh">霸体不能免伤，吃下伤害的同时继续出招。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">03</span><div class="m-body">
+      <p class="m-en">M2s are the only armored attacks currently, active from startup until the hit lands.</p>
+      <p class="m-zh">目前只有 M2 重击拥有霸体，生效时间从前摇开始，直到攻击命中。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">04</span><div class="m-body">
+      <p class="m-en">Hyper-Armor is limited to certain styles.</p>
+      <p class="m-zh">霸体仅部分流派拥有。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">05</span><div class="m-body">
+      <p class="m-q">IFrames · 无敌帧</p>
+      <p class="m-en">IFrames are a brief window where your character is completely unhittable. Attacks pass through you dealing no damage, no chip, and no hitstun the hit simply whiffs.</p>
+      <p class="m-zh">无敌（IFrames）：一段短暂时间内角色完全不可被命中。攻击会直接穿过你，不造成伤害、没有磨血、不会触发受击僵直，攻击直接落空。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">06</span><div class="m-body">
+      <p class="m-en">Nothing connects during i-frames. Unlike hyper armor, you take zero damage, not full damage.</p>
+      <p class="m-zh">无敌期间所有攻击都无法命中。和霸体不同：无敌是完全不吃伤害，而不是硬吃全额伤害。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">07</span><div class="m-body">
+      <p class="m-en">Dodges are the main i-frame moves, active only during the animation's startup and travel you are vulnerable again on recovery.</p>
+      <p class="m-zh">闪避是最主要的无敌帧招式，无敌只在闪避起手和位移阶段生效；收招阶段恢复受击判定。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">08</span><div class="m-body">
+      <p class="m-en">I-frames avoid strikes, but do not save you from clashing.</p>
+      <p class="m-zh">无敌可以躲开攻击，但无法规避攻击缠斗。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">09</span><div class="m-body">
+      <p class="m-en">Getting hit on recovery (after the window ends) is a full punish, a whiffed dodge is worse than blocking.</p>
+      <p class="m-zh">无敌窗口结束、收招阶段被击中会吃到完整惩罚；空掉的闪避代价比格挡更高。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">10</span><div class="m-body">
+      <p class="m-en">You are an additional iframe dodge when fighting more than 1 opponent.</p>
+      <p class="m-zh">当对战多名敌人时，你会多一次带无敌帧的蓝色闪避。</p>
+    </div></div>
+  </div>
+  <div class="m-note">
+    <p>Hyper-Armor = 吃满伤害但不断招　|　IFrames = 完全不受伤</p>
+    <span>霸体自前摇生效至命中为止；无敌仅在闪避的起手与位移段生效，收招阶段恢复受击判定。</span>
+  </div>
+</section>
+
+<section class="wrap msec" id="team">
+  <div class="section-head">
+    <h2><small>TEAM EVASIVE · 多敌闪避</small>Team 机制</h2>
+    <p>Description｜说明 —— 专为多人作战设计的防连控闪避。</p>
+  </div>
+  <div class="m-list">
+    <div class="m-row"><span class="m-no">01</span><div class="m-body">
+      <p class="m-en">This evasive is specifically meant to prevent stun locking while fighting more than one person. After getting hit by two people when you press Q you will enter I-frames and dodge towards your desired direction. Furthermore, you can wait up to ~1-2 seconds after getting hit by two people to perform the dodge.</p>
+      <p class="m-zh">该闪避机制专门用于对抗多人作战，防止被多名敌人连环眩晕压制。遭到两名敌人攻击命中后，按下 Q 键即可获得无敌帧，并朝你指定方向闪避。此外，在被两人击中后的约 1-2 秒内，你都可以触发该闪避。</p>
+    </div></div>
+  </div>
+  <div class="calc">
+    <div><span>Trigger · 触发条件</span><b>被两名敌人命中<i>2 HITS</i></b></div>
+    <div><span>Window · 有效窗口</span><b>约 1-2 秒内可按下 Q<i>~1-2s</i></b></div>
+  </div>
+</section>
+
+<section class="wrap msec" id="counter">
+  <div class="section-head">
+    <h2><small>COUNTERS · 防反</small>防反</h2>
+    <p>Description｜说明 —— 开启后「以伤换伤」的主动反打机制。</p>
+  </div>
+  <div class="m-list">
+    <div class="m-row"><span class="m-no">01</span><div class="m-body">
+      <p class="m-en">Provides the user an orange glow upon using one and immediately responds with a counter attack after being hit.</p>
+      <p class="m-zh">发动防反时角色会发出特殊颜色光效，受到攻击后立刻打出反击。</p>
+    </div></div>
+    <div class="m-row"><span class="m-no">02</span><div class="m-body">
+      <p class="m-en">A missed counter will leave the user vulnerable if not hit upon using the ability.</p>
+      <p class="m-zh">如果开启防反后没有被敌人命中，防反失败，使用者会被自己硬控（容易被攻击）。</p>
+    </div></div>
+  </div>
+</section>
 
 <section class="wrap" id="glossary-wrap" style="margin-top:20px">
   <div class="section-head">
@@ -273,8 +758,33 @@
   <div class="gloss-grid" id="gloss"></div>
 </section>
 
+<section class="wrap msec" id="changelog">
+  <div class="section-head">
+    <h2><small>CHANGELOG · 更新日志</small>更新日志</h2>
+    <p>记录本页的每一次更新，最新版本排在最上方。</p>
+  </div>
+  <div class="log">
+    <article class="log-item">
+      <div class="log-head">
+        <span class="log-ver">v1.0</span>
+        <span class="log-date">2026-10-21</span>
+        <span class="log-tag">首次发布</span>
+      </div>
+      <ol class="log-list">
+        <li>对全部风格词条与注解进行了<b>本地化汉化</b>，更易于理解。</li>
+        <li>修改了<b>咏春</b>的数值错误问题，<b>应该是 6% 不是 8%</b>（Swift Hands 迅疾之手）。</li>
+        <li>对<b>部分风格名称</b>的汉化进行了修改。</li>
+        <li><b>删减完善</b>了通用天赋板块。</li>
+        <li><b>增加更新日志板块</b>，标注每次本网页更新的内容。</li>
+        <li><b>添加了多个机制板块</b>供大家详细了解（身高与数值、M1 / M2、DASH、架势与耐力、格挡穿透、招架 · 弹反、格挡、破防、缠斗、霸体与无敌、Team 机制、防反）。</li>
+      </ol>
+    </article>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
+    <p class="credit">整理 / 制作：<b>kaglorn</b></p>
     <p>
       数据来源：<a href="https://trello.com/b/v3WatB1P/%E5%AD%A6%E4%B9%B1-gakuran-trello" target="_blank" rel="noopener">(学乱) Gakuran Trello</a>
       · Fighting Styles / Combat 列表 · 抓取于 <span id="fetched">—</span>
